@@ -9,7 +9,11 @@ const unsplash = new Unsplash({
   
 
 export default function SearchPhotos() {
+    //using an empty string to intitialize the state of the searchbar input as a string 
     const [query, setQuery] = useState("");
+    //the responses will be stored in the empty array
+    const [pics, setPics] = useState([]);
+
 /**SearchPhotos is an asynchronous function that's trigger when the search button is clicked 
  * unsplash.search specifies the search to photos 
  * @params query- keyword to search for
@@ -21,7 +25,7 @@ export default function SearchPhotos() {
             .photos(query)
             .then(toJson)
             .then((json) => {
-            console.log(json);
+                setPics(json.results); //updates the state every time a new search query is made. 
             });
         
       };
