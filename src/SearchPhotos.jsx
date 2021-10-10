@@ -19,13 +19,14 @@ export default function SearchPhotos() {
  * @params query- keyword to search for
  * @params toJson - method to covert response to JSON 
   */
-    const searchPhotos = async (e) => {
+    const searchPhotos =  (e) => {
         e.preventDefault();
         unsplash.search
             .photos(query)
             .then(toJson)
             .then((json) => {
                 setPics(json.results); //updates the state every time a new search query is made. 
+                setQuery(""); //sets the input field back to empty 
             });
         
       };
@@ -45,10 +46,23 @@ export default function SearchPhotos() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)} 
                 />
-                <button type="submit" className="button">
+                <button type="submit" className="button" >
                     Search
                 </button>
             </form>
+            <div className="card-list">
+                {/**map through the state and display image id */}
+                {
+                pics.map((pic) => <div className="card" key={pic.id}>
+                    <img className="card-image"
+                    alt={pic.alt_description}
+                    src={pic.urls.full}
+                    width="50%"
+                    height="50%"></img>
+                </div>
+                )
+                }
+            </div>
         </>
     );
 }
