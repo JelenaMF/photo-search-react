@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import SearchPhotos  from './component/SearchPhotos';
+import SearchPhotos  from './SearchPhotos';
+
 
 function App() {
   return (
