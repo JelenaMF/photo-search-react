@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <div className="container">
         <h1 className="title" >Photo Search</h1>
-        <SearchPhotos />
+        <SearchPhotos  />
       </div>
     </div>
   );
